@@ -1,4 +1,6 @@
-pip
 torch
 torchvision>=0.3.0
-PIL
+Pillow
+numpy
+opencv-python
+tqdm
