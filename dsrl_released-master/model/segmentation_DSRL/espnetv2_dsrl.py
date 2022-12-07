@@ -200,8 +200,8 @@ class ESPNetv2Segmentation(nn.Module):
         # sssr block
         sssr_1 = self.bu_dec_l5(bu_out)
         sssr_out = self.bu_dec_l6(sssr_1)
-        print({f"sssr_1.shape = {sssr_1.shape}"})
-        print({f"sssr_out.shape = {sssr_out.shape}"})
+        print(f"sssr_1.shape = {sssr_1.shape}")
+        print(f"sssr_out.shape = {sssr_out.shape}")
 
         return  sssr_out 
 
