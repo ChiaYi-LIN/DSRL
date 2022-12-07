@@ -20,7 +20,7 @@ OUTPUT_PATH=espnetv2_dsrl_256x512_output
 WEIGHT_FILE=ckpt-segmentation/espnetv2_dsrl/256x512/espnetv2_2.0_1024_best.pth
 
 echo "========Step1: Perform Testing========"
-CUDA_VISIBLE_DEVICES=0 python test.py --model espnetv2_dsrl --s 2.0 --dataset city --im_size 512 256 --data_path ${DATA_PATH} --split val --savedir ${OUTPUT_PATH} --ckpt_file ${WEIGHT_FILE}
+CUDA_VISIBLE_DEVICES=0 python test.py --model espnetv2_dsrl --s 2.0 --dataset city --im-size 512 256 --data-path ${DATA_PATH} --split val --savedir ${OUTPUT_PATH} --ckpt-file ${WEIGHT_FILE}
 
 
 
@@ -29,9 +29,9 @@ if [ ! -d "./gtFine_val_gt" ]; then
 fi
 
 echo "========Step2: Collect all gt files========"
-cp ${DATA_PATH}/gtFine/val/**/*_trainIds.png ./gtFine_val_gt/
+cp ${DATA_PATH}/gtFine/val/**/*_labelTrainIds.png ./gtFine_val_gt/
 
 echo "========Step3: Start Evaluation========"
-python utils/evaluate_miou.py --task segmentation --gt ./gtFine_val_gt/ --result ${OUTPUT_PATH} --result_suffix 'leftImg8bit.png' --gt_suffix 'gtFine_trainIds.png' --num_classes 19 --ignore_label 255 --result_file 'espnetv2_dsrl_256x512_accuracy.txt'
+python utils/evaluate_miou.py --task segmentation --gt ./gtFine_val_gt/ --result ${OUTPUT_PATH} --result_suffix 'leftImg8bit.png' --gt_suffix 'gtFine_labelTrainIds.png' --num_classes 19 --ignore_label 255 --result_file 'espnetv2_dsrl_256x512_accuracy.txt'
 
 
