@@ -163,9 +163,7 @@ class ESPNetv2Segmentation(nn.Module):
                 enc_out_l4 = layer(enc_out_l4)
         print(f"enc_out_l1.shape = {enc_out_l1.shape}")
         print(f"enc_out_l2.shape = {enc_out_l2.shape}")
-        print(f"enc_out_l3_0.shape = {enc_out_l3_0.shape}")
         print(f"enc_out_l3.shape = {enc_out_l3.shape}")
-        print(f"enc_out_l4_0.shape = {enc_out_l4_0.shape}")
         print(f"enc_out_l4.shape = {enc_out_l4.shape}")
         # bottom-up decoding
         ###### this model outputs: bu_out0
@@ -195,7 +193,7 @@ class ESPNetv2Segmentation(nn.Module):
         bu_out = self.bu_br_l4(bu_out)
         bu_out  = self.bu_dec_l4(bu_out)
         print(f"bu_out.shape = {bu_out.shape}")
-        # return F.interpolate(bu_out, size=x_size, mode='bilinear', align_corners=True)
+        # return F.interpolate(bu_out, size=(x_size[0]*2, x_size[1]*2), mode='bilinear', align_corners=True)
 
         # sssr block
         sssr_1 = self.bu_dec_l5(bu_out)
