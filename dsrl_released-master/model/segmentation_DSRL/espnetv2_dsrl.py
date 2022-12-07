@@ -161,16 +161,16 @@ class ESPNetv2Segmentation(nn.Module):
                 enc_out_l4 = layer(enc_out_l4_0)
             else:
                 enc_out_l4 = layer(enc_out_l4)
-        print({f"enc_out_l1.shape = {enc_out_l1.shape}"})
-        print({f"enc_out_l2.shape = {enc_out_l2.shape}"})
-        print({f"enc_out_l3_0.shape = {enc_out_l3_0.shape}"})
-        print({f"enc_out_l3.shape = {enc_out_l3.shape}"})
-        print({f"enc_out_l4_0.shape = {enc_out_l4_0.shape}"})
-        print({f"enc_out_l4.shape = {enc_out_l4.shape}"})
+        print(f"enc_out_l1.shape = {enc_out_l1.shape}")
+        print(f"enc_out_l2.shape = {enc_out_l2.shape}")
+        print(f"enc_out_l3_0.shape = {enc_out_l3_0.shape}")
+        print(f"enc_out_l3.shape = {enc_out_l3.shape}")
+        print(f"enc_out_l4_0.shape = {enc_out_l4_0.shape}")
+        print(f"enc_out_l4.shape = {enc_out_l4.shape}")
         # bottom-up decoding
         ###### this model outputs: bu_out0
         bu_out = self.bu_dec_l1(enc_out_l4)
-        print({f"bu_out0.shape = {bu_out.shape}"})
+        print(f"bu_out0.shape = {bu_out.shape}")
         # Decoding block
         ###### this model outputs: bu_out1
         bu_out = self.upsample(bu_out)
@@ -178,7 +178,7 @@ class ESPNetv2Segmentation(nn.Module):
         bu_out = enc_out_l3_proj + bu_out
         bu_out = self.bu_br_l2(bu_out)
         bu_out = self.bu_dec_l2(bu_out)
-        print({f"bu_out1.shape = {bu_out.shape}"})
+        print(f"bu_out1.shape = {bu_out.shape}")
         #decoding block
         ###### this model outputs: bu_out2
         bu_out = self.upsample(bu_out)
@@ -186,7 +186,7 @@ class ESPNetv2Segmentation(nn.Module):
         bu_out = enc_out_l2_proj + bu_out
         bu_out = self.bu_br_l3(bu_out)
         bu_out = self.bu_dec_l3(bu_out)
-        print({f"bu_out2.shape = {bu_out.shape}"})
+        print(f"bu_out2.shape = {bu_out.shape}")
         # decoding block
         ###### this model outputs: bu_out
         bu_out = self.upsample(bu_out)
@@ -194,7 +194,7 @@ class ESPNetv2Segmentation(nn.Module):
         bu_out = enc_out_l1_proj + bu_out
         bu_out = self.bu_br_l4(bu_out)
         bu_out  = self.bu_dec_l4(bu_out)
-        print({f"bu_out.shape = {bu_out.shape}"})
+        print(f"bu_out.shape = {bu_out.shape}")
         # return F.interpolate(bu_out, size=x_size, mode='bilinear', align_corners=True)
 
         # sssr block
