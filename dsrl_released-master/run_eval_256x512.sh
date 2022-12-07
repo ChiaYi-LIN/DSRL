@@ -32,6 +32,6 @@ echo "========Step2: Collect all gt files========"
 cp ${DATA_PATH}/gtFine/val/**/*_labelTrainIds.png ./gtFine_val_gt/
 
 echo "========Step3: Start Evaluation========"
-python utils/evaluate_miou.py --task segmentation --gt ./gtFine_val_gt/ --result ${OUTPUT_PATH} --result_suffix 'leftImg8bit.png' --gt_suffix 'gtFine_labelTrainIds.png' --num_classes 19 --ignore_label 255 --result_file 'espnetv2_dsrl_256x512_accuracy.txt'
+python utils/evaluate_miou.py --task segmentation --gt ./gtFine_val_gt/ --result ${OUTPUT_PATH} --result_suffix 'leftImg8bit.png' --gt_suffix 'gtFine_labelTrainIds.png' --num_classes 20 --ignore_label 255 --result_file 'espnetv2_dsrl_256x512_accuracy.txt'
 
 
